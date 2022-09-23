@@ -43,8 +43,9 @@ router.post("/", async (req, res) => {
     coverImage: fileName,
     description: req.body.description,
   });
-  saveCover(book, req.body.cover);
+
   try {
+    saveCover(book, req.body.cover);
     const newBook = await book.save();
     res.redirect(`authors/${newBook.id}`);
   } catch {
@@ -138,7 +139,7 @@ async function renderFormPage(res, book, form, hasError = false) {
 }
 
 function saveCover(book, coverEncoded) {
-  if (coverEncoded == null) return;
+  if (!coverEncoded) return;
   const cover = JSON.parse(coverEncoded);
   if (cover != null && imageMimeTypes.includes(cover.type)) {
     book.coverImage = new Buffer.from(cover.data, "base64");
