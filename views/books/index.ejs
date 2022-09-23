@@ -29,4 +29,7 @@
     <button class="btn btn-primary" type="submit">Search</button>
   </div>
 </form>
-<div><%- include("../partials/bookGrid", {books:books, large:true}) %></div>
+<div>
+  <%- include("../partials/libraryGrid", {library:books, large:true,
+  directory:"books"}) %>
+</div>

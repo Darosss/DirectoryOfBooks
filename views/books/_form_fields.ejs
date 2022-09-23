@@ -1,7 +1,7 @@
 <div class="form-row">
   <div class="form-item">
     <label> Title </label>
-    <input type="text" name="title" value="<%=book.title %>" />
+    <input type="text" name="title" value="<%= book.title %>" />
   </div>
   <div class="form-item">
     <label> Author </label>
@@ -21,7 +21,7 @@
 <div class="form-row">
   <div class="form-item">
     <label> Publish date </label>
-    <input type="date" name="publishDate" value="<%=book.publishDate == null ?
+    <input type="date" name="publishDate" value="<%= book.publishDate == null ?
     '' : book.publishDate.toISOString().split("T")[0] %>" />
   </div>
   <div class="form-item">
@@ -30,7 +30,7 @@
       type="number"
       name="pageCount"
       min="1"
-      value="<%=book.pageCount %>"
+      value="<%= book.pageCount %>"
     />
   </div>
 </div>

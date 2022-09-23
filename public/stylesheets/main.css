@@ -5,6 +5,8 @@
 @import "shared/form.css";
 @import "shared/author.css";
 @import "shared/book.css";
+@import "shared/game.css";
+@import "shared/library.css";
 
 :root {
   font-family: "Gotham Rounded";

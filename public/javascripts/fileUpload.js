@@ -1,8 +1,8 @@
 const rootStyles = window.getComputedStyle(document.documentElement);
 
 if (
-  rootStyles.getPropertyValue("--book-cover-width-large") != null &&
-  rootStyles.getPropertyValue("--book-cover-width-large") != ""
+  rootStyles.getPropertyValue("--library-img-width-large") != null &&
+  rootStyles.getPropertyValue("--library-img-width-large") != ""
 ) {
   ready();
 } else {
@@ -10,13 +10,13 @@ if (
 }
 
 function ready() {
-  const coverWidth = parseFloat(
-    rootStyles.getPropertyValue("--book-cover-width-large")
+  const libraryImgWidth = parseFloat(
+    rootStyles.getPropertyValue("--library-img-width-large")
   );
-  const coverAspectRatio = parseFloat(
-    rootStyles.getPropertyValue("--book-cover-aspect-ratio")
+  const libraryImgAspectRatio = parseFloat(
+    rootStyles.getPropertyValue("--library-img-aspect-ratio")
   );
-  const coverHeight = coverWidth / coverAspectRatio;
+  const libraryImgHeight = libraryImgWidth / libraryImgAspectRatio;
   FilePond.registerPlugin(
     FilePondPluginImagePreview,
     FilePondPluginImageResize,
@@ -24,9 +24,9 @@ function ready() {
   );
 
   FilePond.setOptions({
-    stylePanelAspectRatio: 1 / coverAspectRatio,
-    imageResizeTargetWidth: coverWidth,
-    imageResizeTargetHeight: coverHeight,
+    stylePanelAspectRatio: 1 / libraryImgAspectRatio,
+    imageResizeTargetWidth: libraryImgWidth,
+    imageResizeTargetHeight: libraryImgHeight,
   });
   FilePond.parse(document.body);
 }

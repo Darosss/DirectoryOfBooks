@@ -1,0 +1,26 @@
+<h2 class="page-header"><%= game.title %></h2>
+<div class="book-details">
+  <div>
+    <img class="book-cover" src="<%= game.thumbnailImagePath %>" />
+    <div class="book-details-btn-grid">
+      <a class="btn btn-primary" href="/games/<%= game.id %>/edit">Edit</a>
+      <%- include("../partials/deleteForm", { url: `/games/${game.id}`}) %>
+      <a
+        class="btn btn-primary book-details-author-button"
+        href="/games/<%=  %>"
+      >
+        View publisher?</a
+      >
+    </div>
+  </div>
+  <div class="book-details-grid">
+    <div class="book-details-label">Author:</div>
+    <div><%= game.title%></div>
+    <div class="book-details-label">Publish date::</div>
+    <div><%= game.publishDate %></div>
+    <div class="book-details-label">Page count:</div>
+    <div><%= game.publisher %></div>
+    <div class="book-details-label">Description:</div>
+    <div><%= game.description %></div>
+  </div>
+</div>
