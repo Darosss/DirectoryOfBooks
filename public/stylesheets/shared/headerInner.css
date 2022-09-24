@@ -1,0 +1,28 @@
+:root {
+  --header-inner-font-size: 2rem;
+}
+.page-header {
+  font-size: 2rem;
+  font-weight: 500;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-nav-inner {
+  display: flex;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-nav-inner a {
+  font-size: var(--header-inner-font-size);
+  text-decoration: none;
+  color: hsl(var(--color-base-hue), 100%, 55%);
+}
+.header-nav-inner a:hover {
+  text-decoration: none;
+  color: hsl(var(--color-base-hue), 81%, 11%);
+}

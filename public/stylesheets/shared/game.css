@@ -1,0 +1,33 @@
+.game-details {
+  display: flex;
+}
+
+.game-details-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.game-details-grid {
+  display: grid;
+  align-content: flex-start;
+  align-items: center;
+  grid-gap: 1rem;
+  grid-template-columns: auto auto;
+}
+.game-details-btn-grid {
+  display: grid;
+  justify-items: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  grid-template-areas:
+    "edit delete"
+    "author author";
+  grid-gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.game-details-author-button {
+  grid-area: author;
+  justify-self: stretch;
+}

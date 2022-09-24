@@ -3,6 +3,7 @@ const router = express.Router();
 const Game = require("../models/game");
 const imageMimeTypes = ["image/jpeg", "image/png", "image/gifs"];
 
+//All games + search
 router.get("/", async (req, res) => {
   let query = Game.find();
   if (req.query.title != null && req.query.title != "") {
@@ -23,6 +24,7 @@ router.get("/", async (req, res) => {
   if (req.query.ageRestrictions != null && req.query.ageRestrictions != "") {
     query = query.gte("ageRestrictions", req.query.ageRestrictions);
   }
+  //TODO create better organization in conditions
   try {
     const games = await query.exec();
     res.render("games/index", {
@@ -34,11 +36,12 @@ router.get("/", async (req, res) => {
     res.redirect("/");
   }
 });
-
+//New game
 router.get("/new", (req, res) => {
   renderNewPage(res, new Game());
 });
 
+//Post new game
 router.post("/", async (req, res) => {
   const fileName = req.file != null ? req.file.filename : null;
   const game = new Game({
@@ -60,6 +63,7 @@ router.post("/", async (req, res) => {
     renderNewPage(res, game, true);
   }
 });
+//Get game with id
 router.get("/:id", async (req, res) => {
   try {
     const game = await Game.findById(req.params.id);
@@ -68,6 +72,7 @@ router.get("/:id", async (req, res) => {
     res.redirect("/");
   }
 });
+//Edit route  with id
 router.get("/:id/edit", async (req, res) => {
   try {
     const game = await Game.findById(req.params.id);
@@ -76,7 +81,33 @@ router.get("/:id/edit", async (req, res) => {
     res.redirect("/");
   }
 });
-
+//Update game with id
+router.put("/:id", async (req, res) => {
+  let game;
+  try {
+    game = await Game.findById(req.params.id);
+    game.title = req.body.title;
+    game.publisher = req.body.publisher;
+    game.releaseDate = new Date(req.body.releaseDate);
+    game.ageRestrictions = req.body.ageRestrictions;
+    game.typeOfGame = req.body.typeOfGame;
+    game.tags = req.body.tags;
+    game.description = req.body.description;
+    if (req.body.thumbnail != null && req.body.thumbnail !== "") {
+      saveCover(game, req.body.thumbnail);
+    }
+    await game.save();
+    res.redirect(`/games/${game.id}`);
+  } catch (err) {
+    console.log(err);
+    if (game != null) {
+      renderEditPage(res, game, true);
+    } else {
+      res.redirect("/");
+    }
+  }
+});
+//Delete game
 router.delete("/:id", async (req, res) => {
   let game;
   try {
@@ -126,5 +157,12 @@ function saveThumbnail(game, thumbnailEncoded) {
     game.thumbnailType = img.type;
   }
 }
-
+function saveCover(game, imgEncoded) {
+  if (!imgEncoded) return;
+  const img = JSON.parse(imgEncoded);
+  if (img != null && imageMimeTypes.includes(img.type)) {
+    game.thumbnail = new Buffer.from(img.data, "base64");
+    game.thumbnailType = img.type;
+  }
+}
 module.exports = router;

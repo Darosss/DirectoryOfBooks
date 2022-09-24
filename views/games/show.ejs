@@ -1,32 +1,32 @@
 <h2 class="page-header"><%= game.title %></h2>
-<div class="book-details">
+<div class="game-details">
   <div>
-    <img class="book-cover" src="<%= game.thumbnailImagePath %>" />
-    <div class="book-details-btn-grid">
+    <img class="library-img" src="<%= game.imagePath %>" />
+    <div class="game-details-btn-grid">
       <a class="btn btn-primary" href="/games/<%= game.id %>/edit">Edit</a>
       <%- include("../partials/deleteForm", { url: `/games/${game.id}`}) %>
       <a
-        class="btn btn-primary book-details-author-button"
+        class="btn btn-primary game-details-author-button"
         href="/games/<%=  %>"
       >
         View publisher?</a
       >
     </div>
   </div>
-  <div class="book-details-grid">
-    <div class="book-details-label">Title:</div>
+  <div class="game-details-grid">
+    <div class="game-details-label">Title:</div>
     <div><%= game.title%></div>
-    <div class="book-details-label">Publisher:</div>
+    <div class="game-details-label">Publisher:</div>
     <div><%= game.publisher%></div>
-    <div class="book-details-label">Release date::</div>
+    <div class="game-details-label">Release date::</div>
     <div><%= game.releaseDate.toDateString() %></div>
-    <div class="book-details-label">Age restrictions:</div>
+    <div class="game-details-label">Age restrictions:</div>
     <div><%= game.ageRestrictions %></div>
-    <div class="book-details-label">Game type:</div>
+    <div class="game-details-label">Game type:</div>
     <div><%= game.typeOfGame %></div>
-    <div class="book-details-label">Tags:</div>
+    <div class="game-details-label">Tags:</div>
     <div><%= game.tags %></div>
-    <div class="book-details-label">Description:</div>
+    <div class="game-details-label">Description:</div>
     <div><%= game.description %></div>
   </div>
 </div>
