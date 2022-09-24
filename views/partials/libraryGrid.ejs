@@ -1,8 +1,10 @@
 <% libraryImgClass = locals.large ? 'library-img-large' : ''%> <%
-libraryGridClass = locals.large ? 'library-grid-large' : ''%>
+libraryGridClass = locals.large ? 'library-grid-large' : ''%> <%
+if(locals.header){ %> <%= directory %> <% }%>
 <div class="library-grid <%= libraryGridClass %>">
   <% library.forEach(item =>{ %>
   <a href="/<%= directory %>/<%= item.id %>">
+    <%= item.title %>
     <img
       class="library-img <%= libraryImgClass %>"
       src="<%= item.imagePath %>"
