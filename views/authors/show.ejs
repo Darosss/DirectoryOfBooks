@@ -5,4 +5,5 @@
 </div>
 <% if (booksByAuthor.length > 0){ %>
 <h2 class="page-header">Books by author</h2>
-<%- include('../partials/bookGrid', {books: booksByAuthor}) %> <% } %>
+<%- include("../partials/libraryGrid", {library:booksByAuthor,
+directory:"books"}) %> <% } %>

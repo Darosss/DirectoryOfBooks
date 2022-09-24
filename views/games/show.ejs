@@ -14,12 +14,18 @@
     </div>
   </div>
   <div class="book-details-grid">
-    <div class="book-details-label">Author:</div>
+    <div class="book-details-label">Title:</div>
     <div><%= game.title%></div>
-    <div class="book-details-label">Publish date::</div>
-    <div><%= game.publishDate %></div>
-    <div class="book-details-label">Page count:</div>
-    <div><%= game.publisher %></div>
+    <div class="book-details-label">Publisher:</div>
+    <div><%= game.publisher%></div>
+    <div class="book-details-label">Release date::</div>
+    <div><%= game.releaseDate.toDateString() %></div>
+    <div class="book-details-label">Age restrictions:</div>
+    <div><%= game.ageRestrictions %></div>
+    <div class="book-details-label">Game type:</div>
+    <div><%= game.typeOfGame %></div>
+    <div class="book-details-label">Tags:</div>
+    <div><%= game.tags %></div>
     <div class="book-details-label">Description:</div>
     <div><%= game.description %></div>
   </div>

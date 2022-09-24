@@ -7,19 +7,23 @@
     <label> Publisher </label>
     <input type="text" name="publisher" value="<%= game.publisher %>" />
   </div>
-</div>
-<div class="form-row">
   <div class="form-item form-item-no-grow">
     <label> Release Date </label>
     <input type="date" name="releaseDate" value="<%= game.releaseDate %>" />
   </div>
+</div>
+<div class="form-row">
   <div class="form-item form-item-no-grow">
-    <label> Age restrictions </label>
+    <label> Age restrictions</label>
     <input
       type="number"
       name="ageRestrictions"
       value="<%= game.ageRestrictions %>"
     />
+  </div>
+  <div class="form-item form-item-no-grow">
+    <label> Game type </label>
+    <input type="text" name="typeOfGame" value="<%= game.typeOfGame %>" />
   </div>
   <div class="form-item">
     <label> Tags </label>
@@ -30,7 +34,7 @@
 <div class="form-row">
   <div class="form-item form-item-no-grow">
     <label> Thumbnail </label>
-    <input type="file" name="thumbnail" class="book-cover filepond" />
+    <input type="file" name="thumbnail" class="library-img filepond" />
   </div>
   <div class="form-item">
     <label> Description</label>

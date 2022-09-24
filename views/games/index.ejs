@@ -3,22 +3,60 @@
   <div class="form-row">
     <div class="form-item">
       <label>Title</label>
-      <input type="text" name="title" value="<%=  %>" />
+      <input type="text" name="title" value="<%= searchOptions.title  %>" />
     </div>
   </div>
   <div class="form-row">
     <div class="form-item">
       <label>Released After</label>
-      <input type="date" name="publishedAfter" value="<%=  %>" />
+      <input
+        type="date"
+        name="releasedAfter"
+        value="<%=  searchOptions.releasedAfter %>"
+      />
     </div>
 
     <div class="form-item">
       <label>Released Before</label>
-      <input type="date" name="publishedBefore" value="<%=  %>" />
+      <input
+        type="date"
+        name="releasedBefore"
+        value="<%= searchOptions.releasedBefore  %>"
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-item">
+      <label>Publisher</label>
+      <input
+        type="text"
+        name="publisher"
+        value="<%= searchOptions.publisher  %>"
+      />
+    </div>
+
+    <div class="form-item">
+      <label>Game type</label>
+      <input
+        type="text"
+        name="typeOfGame"
+        value="<%= searchOptions.typeOfGame %>"
+      />
+    </div>
+    <div class="form-item">
+      <label>Age restrictions</label>
+      <input
+        type="number"
+        name="ageRestrictions"
+        value="<%= searchOptions.ageRestrictions  %>"
+      />
     </div>
   </div>
   <div class="form-row form-row-end">
     <button class="btn btn-primary" type="submit">Search</button>
   </div>
 </form>
-<div><%- %></div>
+<div>
+  <%- include("../partials/libraryGrid", {library:games, large:true,
+  directory:"games"}) %>
+</div>
